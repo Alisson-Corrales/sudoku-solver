@@ -141,10 +141,10 @@ function fillInCell(board, row, col){
     }
 }
 
-function repeatFillCell(board, row, cell){
-    //
-}
+//function repeatFillCell(board, row, col){
+//    //
+//}
 
-console.table(_BOARD);
+console.table(getPossible(_BOARD, 0, 3));
 
 //console.table(_BOARD);
