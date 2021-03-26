@@ -130,7 +130,8 @@ function getPossible(board, row, col) {
     return possible;
 }
 
-//problem here(?)
+let update = true;
+
 function fillInCell(board, row, col) {
     if (board[row][col] == '.') {
         let possible = getPossible(board, row, col);
@@ -138,12 +139,21 @@ function fillInCell(board, row, col) {
         //if the possible number(s) is 1 character long, the board's row and column will = what the possible number is
         if (possible.length == 1) {
             board[row][col] = possible[0]
+            update = true;
         }
     }
 }
 //console.log(_BOARD[0])
 //console.log(getPossible(_BOARD, 3,0))
 
+while(update){
+    update = false;
+    for (let rows in _BOARD) {
+        for (let cols in _BOARD[rows]) {
+            fillInCell(_BOARD, rows, cols);
+        }
+    }
+}
 
 //this grabs the row in _BOARD
 //for (let row in _BOARD) {
@@ -160,10 +170,9 @@ function fillInCell(board, row, col) {
 //(1,0) (1,2)
 //(2,1) (2,2)
 
-function finishBoard(row, col){
-    //let used = false;
+/*function finishBoard(row, col){
     if(_BOARD[row][col] == '.'){
-        used = true;
+        //used = true;
         for (let rows in _BOARD) {
             for (let cols in _BOARD[rows]) {
                 fillInCell(_BOARD, rows, cols);
@@ -174,6 +183,7 @@ function finishBoard(row, col){
         break
     }
 }
+*/
 
 //for (let row2 in _BOARD) {
 //    for (let col in _BOARD[row2]) {
